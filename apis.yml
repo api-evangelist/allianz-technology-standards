@@ -1,0 +1,38 @@
+name: Allianz Technology Standards
+description: A collection of technology standards and guidelines maintained by Allianz for software development, architecture, and engineering practices
+image: https://www.allianz.com/content/dam/onemarketing/azcom/Allianz_com/image/allianz-logo.png
+tags:
+- technology standards
+- enterprise architecture
+- software development
+- guidelines
+- best practices
+created: '2024'
+modified: '2024'
+url: https://allianz.github.io/
+apis:
+- name: Allianz Technology Standards API
+  description: Access to Allianz technology standards, guidelines, and best practices documentation
+  image: https://www.allianz.com/content/dam/onemarketing/azcom/Allianz_com/image/allianz-logo.png
+  humanURL: https://allianz.github.io/
+  baseURL: https://allianz.github.io/
+  tags:
+  - standards
+  - documentation
+  - guidelines
+  - architecture
+  properties:
+  - type: Documentation
+    url: https://allianz.github.io/
+  - type: OpenAPI
+    url: https://allianz.github.io/openapi.yaml
+  - type: GitHubRepository
+    url: https://github.com/Allianz
+  contact:
+  - FN: Allianz Technology
+    email: technology@allianz.com
+    url: https://www.allianz.com
+maintainers:
+- FN: Allianz Technology Team
+  email: technology@allianz.com
+  url: https://www.allianz.com
