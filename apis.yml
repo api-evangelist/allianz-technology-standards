@@ -3,11 +3,11 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/allianz-technology-standards/refs/heads/main/apis.yml
 name: Allianz Technology Standards
 tags:
-  - Technology Standards
-  - Enterprise Architecture
-  - Software Development
-  - Guidelines
   - Best Practices
+  - Enterprise Architecture
+  - Guidelines
+  - Software Development
+  - Technology Standards
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 description: >-
