@@ -1,0 +1,10 @@
+{
+  "check_id": "chk-500123",
+  "status": "completed",
+  "passed": 18,
+  "failed": 3,
+  "warnings": 5,
+  "violations": [
+    "sample-violations"
+  ]
+}

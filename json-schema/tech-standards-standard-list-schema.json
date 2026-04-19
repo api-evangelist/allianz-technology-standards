@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/allianz-technology-standards/refs/heads/main/json-schema/tech-standards-standard-list-schema.json",
+  "title": "StandardList",
+  "description": "Paginated list of technology standards",
+  "type": "object",
+  "properties": {
+    "total": {
+      "type": "integer",
+      "description": "Total number of standards",
+      "example": 12
+    },
+    "items": {
+      "type": "array",
+      "description": "List of standard records",
+      "items": {
+        "$ref": "#/components/schemas/Standard"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "standard_id": "std-500001",
+  "name": "REST API Pagination Standard",
+  "category": "api-design",
+  "version": "2.1.0",
+  "status": "current",
+  "description": "Standard for paginating collection responses in Allianz REST APIs",
+  "rules": [
+    "sample-rules"
+  ]
+}

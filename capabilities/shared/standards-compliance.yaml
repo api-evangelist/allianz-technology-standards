@@ -1,0 +1,187 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Allianz Technology Standards Compliance API"
+  description: "API for querying Allianz technology standards definitions and checking API compliance against guidelines."
+  tags:
+    - Technology Standards
+    - Compliance
+    - API Design
+    - Enterprise Architecture
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      ALLIANZ_STANDARDS_CLIENT_ID: ALLIANZ_STANDARDS_CLIENT_ID
+      ALLIANZ_STANDARDS_CLIENT_SECRET: ALLIANZ_STANDARDS_CLIENT_SECRET
+
+capability:
+  consumes:
+    - type: http
+      namespace: allianz-technology-standards
+      baseUri: https://standards.allianz.com/api/v1
+      description: "Allianz Technology Standards Compliance API"
+      authentication:
+        type: bearer
+        token: "{{ALLIANZ_STANDARDS_ACCESS_TOKEN}}"
+      resources:
+        - name: standards
+          path: /standards
+          description: "Technology standard definitions"
+          operations:
+            - name: list-standards
+              method: GET
+              description: "List all technology standards"
+              inputParameters:
+                - name: category
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by category"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-standard
+              method: GET
+              description: "Get a specific technology standard"
+              inputParameters:
+                - name: standard_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "Standard identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: compliance
+          path: /compliance/check
+          description: "Compliance checking"
+          operations:
+            - name: check-compliance
+              method: POST
+              description: "Check an OpenAPI spec for standards compliance"
+              inputParameters:
+                - name: openapi_url
+                  in: body
+                  type: string
+                  required: true
+                  description: "URL of the OpenAPI spec to check"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: guidelines
+          path: /guidelines
+          description: "Specific guideline retrieval"
+          operations:
+            - name: get-pagination-guidelines
+              method: GET
+              description: "Get pagination standard guidelines"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-webhook-guidelines
+              method: GET
+              description: "Get webhook standard guidelines"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: allianz-standards-rest
+      resources:
+        - path: /v1/standards
+          name: standards
+          description: "Standards management"
+          operations:
+            - method: GET
+              name: list-standards
+              description: "List technology standards"
+              call: "allianz-technology-standards.list-standards"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/compliance/check
+          name: compliance
+          description: "Compliance checking"
+          operations:
+            - method: POST
+              name: check-compliance
+              description: "Check API compliance"
+              call: "allianz-technology-standards.check-compliance"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: allianz-standards-mcp
+      transport: http
+      tools:
+        - name: list-standards
+          description: "List Allianz technology standards with filtering by category"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "allianz-technology-standards.list-standards"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-standard
+          description: "Get the full definition and rules of a specific technology standard"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "allianz-technology-standards.get-standard"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: check-compliance
+          description: "Check an OpenAPI specification for compliance with Allianz technology standards"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "allianz-technology-standards.check-compliance"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-pagination-guidelines
+          description: "Get Allianz pagination standard: pageSize, page, totalRequired parameters and headers"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "allianz-technology-standards.get-pagination-guidelines"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-webhook-guidelines
+          description: "Get Allianz webhook standards: notification types, HTTPS requirements, IP whitelisting"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "allianz-technology-standards.get-webhook-guidelines"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,11 @@
+{
+  "guideline_id": "guide-wh-001",
+  "name": "Webhook Notification Standard",
+  "version": "1.3.0",
+  "notification_types": [
+    {}
+  ],
+  "security_requirements": [
+    {}
+  ]
+}

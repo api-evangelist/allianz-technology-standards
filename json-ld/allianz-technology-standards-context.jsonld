@@ -1,0 +1,120 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "allianz": "https://standards.allianz.com/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "StandardList": "allianz:StandardList",
+    "WebhookGuideline": "allianz:WebhookGuideline",
+    "StandardRule": "allianz:StandardRule",
+    "ComplianceCheckRequest": "allianz:ComplianceCheckRequest",
+    "ComplianceViolation": "allianz:ComplianceViolation",
+    "Standard": "allianz:Standard",
+    "ComplianceResult": "allianz:ComplianceResult",
+    "PaginationGuideline": "allianz:PaginationGuideline",
+    "total": {
+      "@id": "allianz:total",
+      "@type": "xsd:integer"
+    },
+    "items": {
+      "@id": "allianz:items",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "guidelineId": {
+      "@id": "allianz:guideline_id",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "allianz:name",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "allianz:version",
+      "@type": "xsd:string"
+    },
+    "notificationTypes": {
+      "@id": "allianz:notification_types",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "securityRequirements": {
+      "@id": "allianz:security_requirements",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "ruleId": {
+      "@id": "allianz:rule_id",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "allianz:description",
+      "@type": "xsd:string"
+    },
+    "severity": {
+      "@id": "allianz:severity",
+      "@type": "xsd:string"
+    },
+    "openapiUrl": {
+      "@id": "allianz:openapi_url",
+      "@type": "@id"
+    },
+    "standardIds": {
+      "@id": "allianz:standard_ids",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "path": {
+      "@id": "allianz:path",
+      "@type": "xsd:string"
+    },
+    "standardId": {
+      "@id": "allianz:standard_id",
+      "@type": "xsd:string"
+    },
+    "category": {
+      "@id": "allianz:category",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "allianz:status",
+      "@type": "xsd:string"
+    },
+    "rules": {
+      "@id": "allianz:rules",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "checkId": {
+      "@id": "allianz:check_id",
+      "@type": "xsd:string"
+    },
+    "passed": {
+      "@id": "allianz:passed",
+      "@type": "xsd:integer"
+    },
+    "failed": {
+      "@id": "allianz:failed",
+      "@type": "xsd:integer"
+    },
+    "warnings": {
+      "@id": "allianz:warnings",
+      "@type": "xsd:integer"
+    },
+    "violations": {
+      "@id": "allianz:violations",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "parameters": {
+      "@id": "allianz:parameters",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "responseHeaders": {
+      "@id": "allianz:response_headers",
+      "@container": "@set",
+      "@type": "xsd:string"
+    }
+  }
+}

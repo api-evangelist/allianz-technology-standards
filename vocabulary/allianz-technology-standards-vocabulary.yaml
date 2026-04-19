@@ -1,0 +1,243 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Allianz Technology Standards"
+  description: "Vocabulary taxonomy for Allianz technology standards covering API design guidelines, backend standards, architecture patterns, and compliance checking."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: allianz-technology-standards
+      version: "1.0.0"
+      baseUrl: https://standards.allianz.com/api/v1
+      status: active
+      description: "Allianz Technology Standards Compliance API"
+
+  resources:
+    - name: standards
+      description: "Technology standard definitions and rules"
+      api: allianz-technology-standards
+      actions:
+        - list-standards
+        - get-standard
+
+    - name: compliance
+      description: "API compliance checking against standards"
+      api: allianz-technology-standards
+      actions:
+        - check-compliance
+
+    - name: guidelines
+      description: "Specific guideline rules for pagination, sorting, webhooks"
+      api: allianz-technology-standards
+      actions:
+        - get-pagination-guidelines
+        - get-webhook-guidelines
+
+  actions:
+    - name: list
+      description: "Retrieve a paginated collection of resources"
+      http_method: GET
+      pattern: read
+
+    - name: get
+      description: "Retrieve a specific resource by identifier"
+      http_method: GET
+      pattern: read
+
+    - name: check
+      description: "Check compliance or validate against standards"
+      http_method: POST
+      pattern: read
+
+  schemas:
+    core:
+      - name: Standard
+        description: "Allianz technology standard definition with rules"
+        key_properties:
+          - standard_id
+          - name
+          - category
+          - version
+          - status
+
+      - name: ComplianceResult
+        description: "Result of an API compliance check against standards"
+        key_properties:
+          - check_id
+          - status
+          - passed
+          - failed
+          - violations
+
+      - name: ComplianceViolation
+        description: "A specific standards violation found in an API"
+        key_properties:
+          - rule_id
+          - description
+          - severity
+          - path
+
+    supporting:
+      - name: StandardRule
+        description: "Individual rule within a technology standard"
+        key_properties:
+          - rule_id
+          - description
+          - severity
+
+      - name: PaginationGuideline
+        description: "Allianz pagination standard parameters and headers"
+        key_properties:
+          - guideline_id
+          - name
+          - version
+          - parameters
+          - response_headers
+
+      - name: WebhookGuideline
+        description: "Allianz webhook standard notification types and security"
+        key_properties:
+          - guideline_id
+          - notification_types
+          - security_requirements
+
+  parameters:
+    filters:
+      - name: category
+        description: "Filter standards by category"
+        type: string
+    pagination:
+      - name: limit
+        description: "Maximum results to return"
+        type: integer
+
+  enums:
+    standard_categories:
+      - api-design
+      - backend
+      - architecture
+      - security
+      - testing
+
+    standard_statuses:
+      - draft
+      - current
+      - deprecated
+      - retired
+
+    rule_severities:
+      - required
+      - recommended
+      - optional
+
+    compliance_statuses:
+      - pending
+      - completed
+      - failed
+
+  authentication:
+    schemes:
+      - type: OAuth2
+        flow: clientCredentials
+        tokenUrl: https://standards.allianz.com/oauth2/token
+        scopes:
+          - standards:read
+          - compliance:check
+
+capability:
+  workflows:
+    - name: Standards Compliance Workflow
+      file: capabilities/standards-compliance-workflow.yaml
+      description: "Query standards and check API compliance for architects and developers"
+      apis_combined:
+        - allianz-technology-standards
+      tool_count: 5
+      personas:
+        - Enterprise Architect
+        - API Developer
+        - Platform Governance Team
+
+  personas:
+    - id: enterprise-architect
+      name: Enterprise Architect
+      description: "Architect responsible for Allianz technology standards governance and enforcement"
+      workflows:
+        - Standards Compliance Workflow
+
+    - id: api-developer
+      name: API Developer
+      description: "Developer building APIs on the Allianz platform who needs to comply with technology standards"
+      workflows:
+        - Standards Compliance Workflow
+
+    - id: platform-governance-team
+      name: Platform Governance Team
+      description: "Team responsible for enforcing Allianz API and technology standards across engineering teams"
+      workflows:
+        - Standards Compliance Workflow
+
+  domains:
+    - name: Standards Governance
+      description: "Defining and maintaining Allianz technology standards"
+      resources:
+        - standards
+
+    - name: API Design Compliance
+      description: "Checking and enforcing compliance with API design standards"
+      resources:
+        - compliance
+        - guidelines
+
+  namespaces:
+    consumed:
+      - name: allianz-technology-standards
+        baseUri: https://standards.allianz.com/api/v1
+    rest_exposed:
+      - name: allianz-standards-compliance-api
+        port: 8080
+    mcp_exposed:
+      - name: allianz-standards-compliance-mcp
+        port: 9090
+
+  binds:
+    - name: ALLIANZ_STANDARDS_CLIENT_ID
+      description: "OAuth2 client ID for standards API access"
+      workflows:
+        - Standards Compliance Workflow
+    - name: ALLIANZ_STANDARDS_CLIENT_SECRET
+      description: "OAuth2 client secret for standards API access"
+      workflows:
+        - Standards Compliance Workflow
+
+crossReference:
+  - resource: standards
+    operations:
+      - list-standards
+      - get-standard
+    workflows:
+      - Standards Compliance Workflow
+    personas:
+      - Enterprise Architect
+      - API Developer
+      - Platform Governance Team
+
+  - resource: compliance
+    operations:
+      - check-compliance
+    workflows:
+      - Standards Compliance Workflow
+    personas:
+      - API Developer
+      - Platform Governance Team
+
+  - resource: guidelines
+    operations:
+      - get-pagination-guidelines
+      - get-webhook-guidelines
+    workflows:
+      - Standards Compliance Workflow
+    personas:
+      - API Developer
+      - Enterprise Architect

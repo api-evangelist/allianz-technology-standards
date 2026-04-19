@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/allianz-technology-standards/refs/heads/main/json-structure/tech-standards-pagination-guideline-structure.json",
+  "description": "Allianz pagination standard definition",
+  "properties": {
+    "guideline_id": {
+      "type": "string",
+      "description": "Unique identifier for the guideline",
+      "example": "guide-pag-001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the guideline",
+      "example": "Pagination Standard"
+    },
+    "version": {
+      "type": "string",
+      "description": "Version of the guideline",
+      "example": "2.1.0"
+    },
+    "parameters": {
+      "type": "array",
+      "description": "Standardized query parameters for pagination",
+      "items": {
+        "type": "object"
+      }
+    },
+    "response_headers": {
+      "type": "array",
+      "description": "Standard response headers for pagination",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "name": "PaginationGuideline"
+}

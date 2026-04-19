@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/allianz-technology-standards/refs/heads/main/json-schema/tech-standards-compliance-result-schema.json",
+  "title": "ComplianceResult",
+  "description": "Result of a compliance check",
+  "type": "object",
+  "properties": {
+    "check_id": {
+      "type": "string",
+      "description": "Unique identifier for the compliance check",
+      "example": "chk-500123"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the compliance check",
+      "enum": [
+        "pending",
+        "completed",
+        "failed"
+      ],
+      "example": "completed"
+    },
+    "passed": {
+      "type": "integer",
+      "description": "Number of rules that passed",
+      "example": 18
+    },
+    "failed": {
+      "type": "integer",
+      "description": "Number of rules that failed",
+      "example": 3
+    },
+    "warnings": {
+      "type": "integer",
+      "description": "Number of warnings found",
+      "example": 5
+    },
+    "violations": {
+      "type": "array",
+      "description": "List of compliance violations found",
+      "items": {
+        "$ref": "#/components/schemas/ComplianceViolation"
+      }
+    }
+  }
+}

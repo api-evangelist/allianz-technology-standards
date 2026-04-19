@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/allianz-technology-standards/refs/heads/main/json-structure/tech-standards-compliance-check-request-structure.json",
+  "description": "Request body for checking API compliance",
+  "properties": {
+    "openapi_url": {
+      "type": "uri",
+      "description": "URL of the OpenAPI spec to check",
+      "example": "https://example.com/openapi.yaml"
+    },
+    "standard_ids": {
+      "type": "array",
+      "description": "List of standard IDs to check against",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "std-500001",
+        "std-500002"
+      ]
+    }
+  },
+  "required": [
+    "openapi_url"
+  ],
+  "name": "ComplianceCheckRequest"
+}

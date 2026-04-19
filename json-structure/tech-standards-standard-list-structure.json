@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/allianz-technology-standards/refs/heads/main/json-structure/tech-standards-standard-list-structure.json",
+  "description": "Paginated list of technology standards",
+  "properties": {
+    "total": {
+      "type": "integer",
+      "description": "Total number of standards",
+      "example": 12
+    },
+    "items": {
+      "type": "array",
+      "description": "List of standard records",
+      "items": {
+        "$ref": "#/components/schemas/Standard"
+      }
+    }
+  },
+  "name": "StandardList"
+}

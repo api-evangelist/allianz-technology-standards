@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/allianz-technology-standards/refs/heads/main/json-schema/tech-standards-standard-schema.json",
+  "title": "Standard",
+  "description": "An Allianz technology standard definition",
+  "type": "object",
+  "properties": {
+    "standard_id": {
+      "type": "string",
+      "description": "Unique identifier for the standard",
+      "example": "std-500001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the standard",
+      "example": "REST API Pagination Standard"
+    },
+    "category": {
+      "type": "string",
+      "description": "Category of the technology standard",
+      "enum": [
+        "api-design",
+        "backend",
+        "architecture",
+        "security",
+        "testing"
+      ],
+      "example": "api-design"
+    },
+    "version": {
+      "type": "string",
+      "description": "Current version of the standard",
+      "example": "2.1.0"
+    },
+    "status": {
+      "type": "string",
+      "description": "Lifecycle status of the standard",
+      "enum": [
+        "draft",
+        "current",
+        "deprecated",
+        "retired"
+      ],
+      "example": "current"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of what the standard covers",
+      "example": "Standard for paginating collection responses in Allianz REST APIs"
+    },
+    "rules": {
+      "type": "array",
+      "description": "List of rules defined by this standard",
+      "items": {
+        "$ref": "#/components/schemas/StandardRule"
+      }
+    }
+  }
+}

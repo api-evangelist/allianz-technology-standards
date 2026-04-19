@@ -1,0 +1,5 @@
+{
+  "rule_id": "pag-001",
+  "description": "pageSize parameter must default to 20",
+  "severity": "required"
+}

@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/allianz-technology-standards/refs/heads/main/json-structure/tech-standards-webhook-guideline-structure.json",
+  "description": "Allianz webhook implementation standard definition",
+  "properties": {
+    "guideline_id": {
+      "type": "string",
+      "description": "Unique identifier for the webhook guideline",
+      "example": "guide-wh-001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the guideline",
+      "example": "Webhook Notification Standard"
+    },
+    "version": {
+      "type": "string",
+      "description": "Version of the guideline",
+      "example": "1.3.0"
+    },
+    "notification_types": {
+      "type": "array",
+      "description": "Supported webhook notification types",
+      "items": {
+        "type": "object"
+      }
+    },
+    "security_requirements": {
+      "type": "array",
+      "description": "Security requirements for webhook endpoints",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "name": "WebhookGuideline"
+}

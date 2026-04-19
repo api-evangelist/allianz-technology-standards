@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/allianz-technology-standards/refs/heads/main/json-schema/tech-standards-compliance-violation-schema.json",
+  "title": "ComplianceViolation",
+  "description": "A compliance violation found during a check",
+  "type": "object",
+  "properties": {
+    "rule_id": {
+      "type": "string",
+      "description": "Rule that was violated",
+      "example": "pag-001"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the violation",
+      "example": "pageSize parameter missing default value of 20"
+    },
+    "severity": {
+      "type": "string",
+      "description": "Severity of the violation",
+      "enum": [
+        "required",
+        "recommended",
+        "optional"
+      ],
+      "example": "required"
+    },
+    "path": {
+      "type": "string",
+      "description": "API path where the violation was found",
+      "example": "/policies"
+    }
+  }
+}

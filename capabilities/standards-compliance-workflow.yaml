@@ -1,0 +1,136 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Allianz Standards Compliance Workflow"
+  description: "Workflow capability for architects and developers querying Allianz technology standards and checking API compliance against documented guidelines."
+  tags:
+    - Technology Standards
+    - API Design
+    - Compliance
+    - Enterprise Architecture
+    - Governance
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      ALLIANZ_STANDARDS_CLIENT_ID: ALLIANZ_STANDARDS_CLIENT_ID
+      ALLIANZ_STANDARDS_CLIENT_SECRET: ALLIANZ_STANDARDS_CLIENT_SECRET
+
+capability:
+  consumes:
+    - import: allianz-technology-standards
+      location: ./shared/standards-compliance.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: allianz-standards-compliance-api
+      description: "Unified REST API for Allianz technology standards compliance workflows."
+      resources:
+        - path: /v1/standards
+          name: standards
+          description: "Standards catalog"
+          operations:
+            - method: GET
+              name: list-standards
+              description: "List technology standards"
+              call: "allianz-technology-standards.list-standards"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/standards/{standard_id}
+          name: standard-detail
+          description: "Individual standard detail"
+          operations:
+            - method: GET
+              name: get-standard
+              description: "Get standard definition"
+              call: "allianz-technology-standards.get-standard"
+              with:
+                standard_id: "rest.standard_id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/compliance/check
+          name: compliance
+          description: "Compliance checking"
+          operations:
+            - method: POST
+              name: check-compliance
+              description: "Check API compliance"
+              call: "allianz-technology-standards.check-compliance"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/guidelines/pagination
+          name: pagination-guidelines
+          description: "Pagination guidelines"
+          operations:
+            - method: GET
+              name: get-pagination-guidelines
+              description: "Get pagination standard"
+              call: "allianz-technology-standards.get-pagination-guidelines"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: allianz-standards-compliance-mcp
+      transport: http
+      description: "MCP server for AI-assisted Allianz technology standards compliance."
+      tools:
+        - name: list-technology-standards
+          description: "List all Allianz technology standards categorized by api-design, backend, architecture, security, and testing"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "allianz-technology-standards.list-standards"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-technology-standard
+          description: "Get the full rules and definition of a specific Allianz technology standard"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "allianz-technology-standards.get-standard"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: check-api-compliance
+          description: "Check an OpenAPI specification for compliance with Allianz technology standards and get violations"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "allianz-technology-standards.check-compliance"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-pagination-standard
+          description: "Get Allianz REST API pagination standard: pageSize, page, totalRequired parameters and response headers"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "allianz-technology-standards.get-pagination-guidelines"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-webhook-standard
+          description: "Get Allianz webhook implementation standard: technical/functional types, HTTPS, IP whitelisting requirements"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "allianz-technology-standards.get-webhook-guidelines"
+          outputParameters:
+            - type: object
+              mapping: "$."

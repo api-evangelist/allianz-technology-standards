@@ -1,0 +1,6 @@
+{
+  "rule_id": "pag-001",
+  "description": "pageSize parameter missing default value of 20",
+  "severity": "required",
+  "path": "/policies"
+}

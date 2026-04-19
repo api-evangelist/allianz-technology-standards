@@ -1,0 +1,11 @@
+{
+  "guideline_id": "guide-pag-001",
+  "name": "Pagination Standard",
+  "version": "2.1.0",
+  "parameters": [
+    {}
+  ],
+  "response_headers": [
+    {}
+  ]
+}

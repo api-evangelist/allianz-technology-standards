@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/allianz-technology-standards/refs/heads/main/json-schema/tech-standards-standard-rule-schema.json",
+  "title": "StandardRule",
+  "description": "An individual rule within a technology standard",
+  "type": "object",
+  "properties": {
+    "rule_id": {
+      "type": "string",
+      "description": "Unique identifier for the rule",
+      "example": "pag-001"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the rule",
+      "example": "pageSize parameter must default to 20"
+    },
+    "severity": {
+      "type": "string",
+      "description": "Severity level of the rule",
+      "enum": [
+        "required",
+        "recommended",
+        "optional"
+      ],
+      "example": "required"
+    }
+  }
+}

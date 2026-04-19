@@ -1,0 +1,7 @@
+{
+  "openapi_url": "https://example.com/openapi.yaml",
+  "standard_ids": [
+    "std-500001",
+    "std-500002"
+  ]
+}
