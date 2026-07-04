@@ -1,0 +1,27 @@
+generated: '2026-06-20'
+method: derived
+format: custom
+source: openapi/allianz-technology-standards-compliance.yaml
+notes: >-
+  Error responses use a custom application/json ErrorResponse schema
+  (error, message, request_id) rather than RFC 9457 application/problem+json,
+  so no `type` URIs are defined. Problems below are derived from the 4xx
+  responses declared across operations.
+schema:
+  media_type: application/json
+  fields:
+    - error
+    - message
+    - request_id
+problems:
+  - status: 400
+    title: Invalid request
+    source_operation: openapi/allianz-technology-standards-compliance.yaml#checkCompliance
+  - status: 401
+    title: Unauthorized
+    source_operation: >-
+      openapi/allianz-technology-standards-compliance.yaml#listStandards,getStandard,checkCompliance,getPaginationGuidelines,getWebhookGuidelines
+  - status: 404
+    title: Standard not found
+    example_error: not_found
+    source_operation: openapi/allianz-technology-standards-compliance.yaml#getStandard

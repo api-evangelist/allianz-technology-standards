@@ -1,0 +1,28 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/allianz-technology-standards-compliance.yaml
+notes: >-
+  No official hosted or remote MCP server is published by Allianz for the
+  technology standards / compliance surface. The tool list below is a candidate
+  derived one-to-one from the operations in the documentation-synthesized
+  Compliance API OpenAPI, for use if an MCP server is stood up.
+server:
+  name: allianz-technology-standards
+  transport: http
+tools:
+  - name: list_standards
+    description: List all Allianz technology standards with categories and current versions.
+    source_operation: openapi/allianz-technology-standards-compliance.yaml#listStandards
+  - name: get_standard
+    description: Retrieve the full definition and rules for a specific technology standard.
+    source_operation: openapi/allianz-technology-standards-compliance.yaml#getStandard
+  - name: check_compliance
+    description: Check an OpenAPI specification against Allianz technology standards.
+    source_operation: openapi/allianz-technology-standards-compliance.yaml#checkCompliance
+  - name: get_pagination_guidelines
+    description: Retrieve the Allianz pagination standard including parameters and response headers.
+    source_operation: openapi/allianz-technology-standards-compliance.yaml#getPaginationGuidelines
+  - name: get_webhook_guidelines
+    description: Retrieve Allianz webhook implementation standards and security requirements.
+    source_operation: openapi/allianz-technology-standards-compliance.yaml#getWebhookGuidelines

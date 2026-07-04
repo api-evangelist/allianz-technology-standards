@@ -1,0 +1,54 @@
+generated: '2026-06-20'
+method: searched
+source: probed /.well-known/* on all apis.yml base hosts + OpenAPI server host
+notes: >-
+  No discovery documents were served. developers.allianz-trade.com returns a
+  genuine 404 for every /.well-known/ path. globaldigitalfactory.allianz.com and
+  www.allianz.com sit behind a WAF that returns 403 to automated requests.
+  standards.allianz.com (the OpenAPI servers[] host) does not resolve (curl 000),
+  confirming that host is synthesized from documentation rather than a live API.
+hosts:
+  - host: https://developers.allianz-trade.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://globaldigitalfactory.allianz.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+  - host: https://www.allianz.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+  - host: https://standards.allianz.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 0
+      - path: /.well-known/openid-configuration
+        status: 0
+      - path: /.well-known/oauth-authorization-server
+        status: 0

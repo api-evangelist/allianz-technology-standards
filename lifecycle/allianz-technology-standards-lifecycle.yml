@@ -1,0 +1,30 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/allianz-technology-standards-compliance.yaml + apis.yml
+notes: >-
+  No published SLA, deprecation policy, or status page was found for the
+  documentation-synthesized Allianz Technology Standards Compliance API. The
+  versioning and status-lifecycle facts below are derived from the OpenAPI and
+  catalog. Note the standards themselves carry a lifecycle status field
+  (draft | current | deprecated | retired) applied to standard definitions,
+  distinct from API operation deprecation.
+versioning:
+  scheme: uri-path
+  current: v1
+  evidence: servers[] url path /api/v1; info.version 1.0.0
+deprecation:
+  policy_url: null
+  sunset_header: false
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+standard_status_model:
+  field: status
+  values:
+    - draft
+    - current
+    - deprecated
+    - retired
+  evidence: Standard.status enum in openapi components
+deprecated_operations: []

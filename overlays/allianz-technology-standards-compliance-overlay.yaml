@@ -1,0 +1,24 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Allianz Technology Standards Compliance API
+  version: 1.0.0
+extends: openapi/allianz-technology-standards-compliance.yaml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-aid: allianz-technology-standards:allianz-trade-api-standards
+      x-apievangelist-provenance: >-
+        OpenAPI generated from Allianz public API design documentation
+        (x-generated-from: documentation); server host is illustrative.
+      x-apievangelist-tags:
+        - API Design
+        - Guidelines
+        - Technology Standards
+  - target: $.info
+    update:
+      x-apievangelist-artifacts:
+        packages: packages/allianz-technology-standards-packages.yml
+        conformance: conformance/allianz-technology-standards-conformance.yml
+        errors: errors/allianz-technology-standards-problem-types.yml
+        lifecycle: lifecycle/allianz-technology-standards-lifecycle.yml
+        mcp: mcp/allianz-technology-standards-mcp.yml

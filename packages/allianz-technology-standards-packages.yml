@@ -1,0 +1,29 @@
+generated: '2026-06-20'
+method: searched
+source: https://registry.npmjs.org/-/v1/search?text=@allianz
+notes: >-
+  No first-party client SDK exists for the (documentation-synthesized) Allianz
+  Technology Standards Compliance API. The packages below are the official
+  open-source libraries published by the Allianz Global Digital Factory (GDF) /
+  Allianz Open Source Initiative (aposin), which are the concrete engineering
+  output of the standards this index documents. They are UI component libraries,
+  not API SDKs.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@allianz/ng-aquila"
+    url: https://www.npmjs.com/package/@allianz/ng-aquila
+    install: npm install @allianz/ng-aquila
+    description: >-
+      Aquila open-source Angular component library provided by the Allianz Global
+      Digital Factory (white-label variant of the internal Allianz design system).
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@aposin/ng-aquila"
+    url: https://www.npmjs.com/package/@aposin/ng-aquila
+    install: npm install @aposin/ng-aquila
+    description: >-
+      Original Allianz Open Source Initiative (aposin) scope of the Aquila Angular
+      component library; superseded by the @allianz scope.
+    official: true

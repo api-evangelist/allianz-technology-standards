@@ -1,0 +1,43 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/allianz-technology-standards-compliance.yaml + apis.yml Features
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      securitySchemes.OAuth2 type oauth2 with clientCredentials flow
+      (tokenUrl https://standards.allianz.com/oauth2/token); apis.yml documents
+      OAuth2 client-credentials as the standard for programmatic API auth.
+  - id: oidc
+    conforms: false
+    evidence: no openid-configuration served and no OIDC scopes/discovery in spec.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Error responses use a custom application/json ErrorResponse schema
+      (error, message, request_id), not application/problem+json.
+  - id: openapi-3
+    conforms: true
+    evidence: openapi 3.0.3 document present.
+  - id: pagination
+    conforms: true
+    evidence: >-
+      Documented Allianz pagination standard — pageSize (default 20), page
+      (default 1), totalRequired query params with Total-Items / Total-Pages
+      response headers (getPaginationGuidelines + apis.yml Features).
+  - id: idempotency
+    conforms: false
+    evidence: no Idempotency-Key header defined on POST checkCompliance.
+  - id: json-api
+    conforms: false
+    evidence: responses are plain JSON objects, not JSON:API media type/structure.
+  - id: fhir-r4
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: odata
+    conforms: false
+  - id: psd2
+    conforms: false

@@ -19,7 +19,7 @@ description: >-
   for Frontends (BFF) architecture, and standardized patterns for pagination,
   sorting, webhooks, and asynchronous processing.
 created: '2024-01-01'
-modified: '2026-04-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
   - aid: allianz-technology-standards:allianz-trade-api-standards
@@ -34,6 +34,8 @@ apis:
         type: Documentation
       - url: https://developers.allianz-trade.com/
         type: Portal
+      - url: overlays/allianz-technology-standards-compliance-overlay.yaml
+        type: Overlay
     description: >-
       Allianz Trade API design guidelines covering REST API conventions,
       pagination standards (pageSize, page, totalRequired), sorting conventions,
@@ -74,6 +76,20 @@ common:
     type: Vocabulary
   - url: capabilities/standards-compliance-workflow.yaml
     type: NaftikoCapability
+  - url: packages/allianz-technology-standards-packages.yml
+    type: Packages
+  - url: well-known/allianz-technology-standards-well-known.yml
+    type: WellKnown
+  - url: mcp/allianz-technology-standards-mcp.yml
+    type: MCPServer
+  - url: llms/allianz-technology-standards-llms.txt
+    type: LLMsTxt
+  - url: conformance/allianz-technology-standards-conformance.yml
+    type: Conformance
+  - url: errors/allianz-technology-standards-problem-types.yml
+    type: ErrorCatalog
+  - url: lifecycle/allianz-technology-standards-lifecycle.yml
+    type: Lifecycle
   - type: Features
     data:
       - name: API First Development
