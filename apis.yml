@@ -64,6 +64,8 @@ apis:
     baseURL: https://globaldigitalfactory.allianz.com
 
 common:
+  - type: OAuthScopes
+    url: scopes/allianz-technology-standards-scopes.yml
   - url: https://github.com/Allianz
     type: GitHubOrganization
   - url: https://www.allianz.com/
