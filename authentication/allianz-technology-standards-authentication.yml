@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/allianz-technology-standards-compliance.yaml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://standards.allianz.com/oauth2/token
+    scopes: 2
+  description: OAuth2 client credentials for Allianz standards API
+  sources:
+  - openapi/allianz-technology-standards-compliance.yaml

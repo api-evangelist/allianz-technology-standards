@@ -64,6 +64,12 @@ apis:
     baseURL: https://globaldigitalfactory.allianz.com
 
 common:
+  - type: VulnerabilityDisclosure
+    url: security/allianz-technology-standards-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/allianz-technology-standards-domain-security.yml
+  - type: Authentication
+    url: authentication/allianz-technology-standards-authentication.yml
   - type: OAuthScopes
     url: scopes/allianz-technology-standards-scopes.yml
   - url: https://github.com/Allianz
