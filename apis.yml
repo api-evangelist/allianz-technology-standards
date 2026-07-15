@@ -64,6 +64,8 @@ apis:
     baseURL: https://globaldigitalfactory.allianz.com
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/allianz-technology-standards-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/allianz-technology-standards-vulnerability-disclosure.yml
   - type: DomainSecurity
