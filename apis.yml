@@ -2,6 +2,7 @@ aid: allianz-technology-standards
 url: >-
   https://raw.githubusercontent.com/api-evangelist/allianz-technology-standards/refs/heads/main/apis.yml
 name: Allianz Technology Standards
+kind: topic
 tags:
   - Best Practices
   - Enterprise Architecture
