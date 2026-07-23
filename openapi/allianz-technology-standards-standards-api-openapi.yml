@@ -1,0 +1,236 @@
+openapi: 3.0.3
+info:
+  title: Allianz Technology Compliance Standards API
+  description: API for checking and documenting compliance with Allianz technology standards. Provides endpoints for querying standards definitions, checking API compliance against guidelines, and retrieving standard-specific rules for pagination, sorting, webhooks, authentication, and architecture patterns.
+  version: 1.0.0
+  contact:
+    name: Allianz Technology Standards
+    url: https://developers.allianz-trade.com/docs/api-design-guidelines
+  x-generated-from: documentation
+servers:
+- url: https://standards.allianz.com/api/v1
+  description: Allianz Technology Standards API production server
+security:
+- OAuth2: []
+tags:
+- name: Standards
+  description: Technology standard definitions and retrieval
+paths:
+  /standards:
+    get:
+      operationId: listStandards
+      summary: Allianz Technology Standards List Standards
+      description: List all Allianz technology standards with their categories and current versions.
+      tags:
+      - Standards
+      parameters:
+      - name: category
+        in: query
+        required: false
+        description: Filter standards by category
+        schema:
+          type: string
+          enum:
+          - api-design
+          - backend
+          - architecture
+          - security
+          - testing
+        example: api-design
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of standards to return
+        schema:
+          type: integer
+          default: 20
+        example: 20
+      responses:
+        '200':
+          description: Standards retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandardList'
+              examples:
+                ListStandards200Example:
+                  summary: Default listStandards 200 response
+                  x-microcks-default: true
+                  value:
+                    total: 12
+                    items:
+                    - standard_id: std-500001
+                      name: REST API Pagination Standard
+                      category: api-design
+                      version: 2.1.0
+                      status: current
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /standards/{standard_id}:
+    get:
+      operationId: getStandard
+      summary: Allianz Technology Standards Get Standard
+      description: Retrieve the full definition and rules for a specific technology standard.
+      tags:
+      - Standards
+      parameters:
+      - name: standard_id
+        in: path
+        required: true
+        description: Unique identifier of the standard
+        schema:
+          type: string
+        example: std-500001
+      responses:
+        '200':
+          description: Standard retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Standard'
+              examples:
+                GetStandard200Example:
+                  summary: Default getStandard 200 response
+                  x-microcks-default: true
+                  value:
+                    standard_id: std-500001
+                    name: REST API Pagination Standard
+                    category: api-design
+                    version: 2.1.0
+                    status: current
+                    description: Standard for paginating collection responses in Allianz REST APIs
+                    rules:
+                    - rule_id: pag-001
+                      description: pageSize parameter must default to 20
+                      severity: required
+        '404':
+          description: Standard not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Standard:
+      title: Standard
+      type: object
+      description: An Allianz technology standard definition
+      properties:
+        standard_id:
+          type: string
+          description: Unique identifier for the standard
+          example: std-500001
+        name:
+          type: string
+          description: Human-readable name of the standard
+          example: REST API Pagination Standard
+        category:
+          type: string
+          description: Category of the technology standard
+          enum:
+          - api-design
+          - backend
+          - architecture
+          - security
+          - testing
+          example: api-design
+        version:
+          type: string
+          description: Current version of the standard
+          example: 2.1.0
+        status:
+          type: string
+          description: Lifecycle status of the standard
+          enum:
+          - draft
+          - current
+          - deprecated
+          - retired
+          example: current
+        description:
+          type: string
+          description: Description of what the standard covers
+          example: Standard for paginating collection responses in Allianz REST APIs
+        rules:
+          type: array
+          description: List of rules defined by this standard
+          items:
+            $ref: '#/components/schemas/StandardRule'
+    StandardRule:
+      title: StandardRule
+      type: object
+      description: An individual rule within a technology standard
+      properties:
+        rule_id:
+          type: string
+          description: Unique identifier for the rule
+          example: pag-001
+        description:
+          type: string
+          description: Human-readable description of the rule
+          example: pageSize parameter must default to 20
+        severity:
+          type: string
+          description: Severity level of the rule
+          enum:
+          - required
+          - recommended
+          - optional
+          example: required
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: Standard error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_found
+        message:
+          type: string
+          description: Human-readable error description
+          example: The specified standard_id does not exist
+        request_id:
+          type: string
+          description: Request identifier for support reference
+          example: req-500999
+    StandardList:
+      title: StandardList
+      type: object
+      description: Paginated list of technology standards
+      properties:
+        total:
+          type: integer
+          description: Total number of standards
+          example: 12
+        items:
+          type: array
+          description: List of standard records
+          items:
+            $ref: '#/components/schemas/Standard'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 client credentials for Allianz standards API
+      flows:
+        clientCredentials:
+          tokenUrl: https://standards.allianz.com/oauth2/token
+          scopes:
+            standards:read: Read technology standards
+            compliance:check: Run compliance checks

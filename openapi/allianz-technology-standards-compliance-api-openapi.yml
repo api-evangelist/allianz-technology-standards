@@ -1,0 +1,185 @@
+openapi: 3.0.3
+info:
+  title: Allianz Technology Standards Compliance API
+  description: API for checking and documenting compliance with Allianz technology standards. Provides endpoints for querying standards definitions, checking API compliance against guidelines, and retrieving standard-specific rules for pagination, sorting, webhooks, authentication, and architecture patterns.
+  version: 1.0.0
+  contact:
+    name: Allianz Technology Standards
+    url: https://developers.allianz-trade.com/docs/api-design-guidelines
+  x-generated-from: documentation
+servers:
+- url: https://standards.allianz.com/api/v1
+  description: Allianz Technology Standards API production server
+security:
+- OAuth2: []
+tags:
+- name: Compliance
+  description: API compliance checking against Allianz standards
+paths:
+  /compliance/check:
+    post:
+      operationId: checkCompliance
+      summary: Allianz Technology Standards Check Compliance
+      description: Check an OpenAPI specification against Allianz technology standards and return compliance results with violations and recommendations.
+      tags:
+      - Compliance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ComplianceCheckRequest'
+            examples:
+              CheckComplianceRequestExample:
+                summary: Default checkCompliance request
+                x-microcks-default: true
+                value:
+                  openapi_url: https://example.com/openapi.yaml
+                  standard_ids:
+                  - std-500001
+                  - std-500002
+      responses:
+        '200':
+          description: Compliance check completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceResult'
+              examples:
+                CheckCompliance200Example:
+                  summary: Default checkCompliance 200 response
+                  x-microcks-default: true
+                  value:
+                    check_id: chk-500123
+                    status: completed
+                    passed: 18
+                    failed: 3
+                    warnings: 5
+                    violations:
+                    - rule_id: pag-001
+                      description: pageSize parameter missing default value of 20
+                      severity: required
+                      path: /policies
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      description: Standard error response
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: not_found
+        message:
+          type: string
+          description: Human-readable error description
+          example: The specified standard_id does not exist
+        request_id:
+          type: string
+          description: Request identifier for support reference
+          example: req-500999
+    ComplianceViolation:
+      title: ComplianceViolation
+      type: object
+      description: A compliance violation found during a check
+      properties:
+        rule_id:
+          type: string
+          description: Rule that was violated
+          example: pag-001
+        description:
+          type: string
+          description: Description of the violation
+          example: pageSize parameter missing default value of 20
+        severity:
+          type: string
+          description: Severity of the violation
+          enum:
+          - required
+          - recommended
+          - optional
+          example: required
+        path:
+          type: string
+          description: API path where the violation was found
+          example: /policies
+    ComplianceCheckRequest:
+      title: ComplianceCheckRequest
+      type: object
+      description: Request body for checking API compliance
+      required:
+      - openapi_url
+      properties:
+        openapi_url:
+          type: string
+          format: uri
+          description: URL of the OpenAPI spec to check
+          example: https://example.com/openapi.yaml
+        standard_ids:
+          type: array
+          description: List of standard IDs to check against
+          items:
+            type: string
+          example:
+          - std-500001
+          - std-500002
+    ComplianceResult:
+      title: ComplianceResult
+      type: object
+      description: Result of a compliance check
+      properties:
+        check_id:
+          type: string
+          description: Unique identifier for the compliance check
+          example: chk-500123
+        status:
+          type: string
+          description: Status of the compliance check
+          enum:
+          - pending
+          - completed
+          - failed
+          example: completed
+        passed:
+          type: integer
+          description: Number of rules that passed
+          example: 18
+        failed:
+          type: integer
+          description: Number of rules that failed
+          example: 3
+        warnings:
+          type: integer
+          description: Number of warnings found
+          example: 5
+        violations:
+          type: array
+          description: List of compliance violations found
+          items:
+            $ref: '#/components/schemas/ComplianceViolation'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth2 client credentials for Allianz standards API
+      flows:
+        clientCredentials:
+          tokenUrl: https://standards.allianz.com/oauth2/token
+          scopes:
+            standards:read: Read technology standards
+            compliance:check: Run compliance checks
