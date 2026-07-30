@@ -12,7 +12,19 @@ tags:
   - API Design
   - OpenAPI
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/allianz-technology-standards.png
 description: >-
   A collection of technology standards and guidelines maintained by Allianz for
   software development, API design, architecture, and engineering practices.
@@ -23,47 +35,73 @@ created: '2024-01-01'
 modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
-  - aid: allianz-technology-standards:allianz-trade-api-standards
-    name: Allianz Trade API Design Standards
-    tags:
-      - API Design
-      - Guidelines
-      - REST API
-      - OpenAPI
-    properties:
-      - url: https://developers.allianz-trade.com/docs/api-design-guidelines
-        type: Documentation
-      - url: https://developers.allianz-trade.com/
-        type: Portal
-      - url: overlays/allianz-technology-standards-compliance-overlay.yaml
-        type: Overlay
-    description: >-
-      Allianz Trade API design guidelines covering REST API conventions,
-      pagination standards (pageSize, page, totalRequired), sorting conventions,
-      asynchronous processing with JobID management, webhook notification
-      patterns, and security requirements for API integrations.
-    humanURL: https://developers.allianz-trade.com/docs/api-design-guidelines
-    baseURL: https://developers.allianz-trade.com
-
-  - aid: allianz-technology-standards:allianz-backend-standards
-    name: Allianz Backend Development Standards
-    tags:
-      - Backend
-      - Java
-      - Kotlin
-      - Spring Boot
-      - Architecture
-    properties:
-      - url: https://globaldigitalfactory.allianz.com/blog/finally-talking-about-backend-.html
-        type: Documentation
-    description: >-
-      Allianz Global Digital Factory backend development standards. Uses Java
-      and Kotlin with Spring Boot for microservices, API-first approach with
-      OpenAPI specifications, Backend for Frontends (BFF) architecture, and
-      comprehensive automated testing practices.
-    humanURL: https://globaldigitalfactory.allianz.com/blog/finally-talking-about-backend-.html
-    baseURL: https://globaldigitalfactory.allianz.com
-
+- aid: allianz-technology-standards:allianz-trade-api-standards
+  name: Allianz Trade API Design Standards
+  tags:
+  - API Design
+  - Guidelines
+  - REST API
+  - OpenAPI
+  properties:
+  - url: https://developers.allianz-trade.com/docs/api-design-guidelines
+    type: Documentation
+  - url: https://developers.allianz-trade.com/
+    type: Portal
+  - url: overlays/allianz-technology-standards-compliance-overlay.yaml
+    type: Overlay
+  description: >-
+    Allianz Trade API design guidelines covering REST API conventions, pagination standards (pageSize,
+    page, totalRequired), sorting conventions, asynchronous processing with JobID management, webhook
+    notification patterns, and security requirements for API integrations.
+  humanURL: https://developers.allianz-trade.com/docs/api-design-guidelines
+  baseURL: https://developers.allianz-trade.com
+- aid: allianz-technology-standards:allianz-backend-standards
+  name: Allianz Backend Development Standards
+  tags:
+  - Backend
+  - Java
+  - Kotlin
+  - Spring Boot
+  - Architecture
+  properties:
+  - url: https://globaldigitalfactory.allianz.com/blog/finally-talking-about-backend-.html
+    type: Documentation
+  description: >-
+    Allianz Global Digital Factory backend development standards. Uses Java and Kotlin with Spring Boot
+    for microservices, API-first approach with OpenAPI specifications, Backend for Frontends (BFF) architecture,
+    and comprehensive automated testing practices.
+  humanURL: https://globaldigitalfactory.allianz.com/blog/finally-talking-about-backend-.html
+  baseURL: https://globaldigitalfactory.allianz.com
+- aid: allianz-technology-standards:allianz-technology-standards-compliance-api
+  name: Allianz Technology Standards Compliance API
+  description: API compliance checking against Allianz standards
+  humanURL: https://developers.allianz-trade.com/docs/api-design-guidelines
+  baseURL: https://developers.allianz-trade.com
+  tags:
+  - Compliance
+  properties:
+  - type: OpenAPI
+    url: openapi/allianz-technology-standards-compliance-api-openapi.yml
+- aid: allianz-technology-standards:allianz-technology-standards-guidelines-api
+  name: Allianz Technology Standards Guidelines API
+  description: Specific guideline rules for API design areas
+  humanURL: https://developers.allianz-trade.com/docs/api-design-guidelines
+  baseURL: https://developers.allianz-trade.com
+  tags:
+  - Guidelines
+  properties:
+  - type: OpenAPI
+    url: openapi/allianz-technology-standards-guidelines-api-openapi.yml
+- aid: allianz-technology-standards:allianz-technology-standards-standards-api
+  name: Allianz Technology Standards Standards API
+  description: Technology standard definitions and retrieval
+  humanURL: https://developers.allianz-trade.com/docs/api-design-guidelines
+  baseURL: https://developers.allianz-trade.com
+  tags:
+  - Standards
+  properties:
+  - type: OpenAPI
+    url: openapi/allianz-technology-standards-standards-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/allianz-technology-standards-agentic-access.yml
