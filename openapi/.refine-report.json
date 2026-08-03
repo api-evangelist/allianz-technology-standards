@@ -1,0 +1,18 @@
+{
+  "provider": "allianz-technology-standards",
+  "sources": [
+    "allianz-technology-standards-compliance-api-openapi.yml",
+    "allianz-technology-standards-guidelines-api-openapi.yml",
+    "allianz-technology-standards-standards-api-openapi.yml"
+  ],
+  "outputs": [
+    "allianz-technology-standards-compliance-api-openapi.yml",
+    "allianz-technology-standards-guidelines-api-openapi.yml",
+    "allianz-technology-standards-standards-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
