@@ -1,0 +1,254 @@
+{
+  "item": [
+    {
+      "id": "57074b5a-5fed-4ace-9971-6372ff3d8249",
+      "name": "Compliance",
+      "description": {
+        "content": "API compliance checking against Allianz standards",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "26d85a42-c201-4341-b2df-7d72c62a0555",
+          "name": "Allianz Technology Standards Check Compliance",
+          "request": {
+            "name": "Allianz Technology Standards Check Compliance",
+            "description": {
+              "content": "Check an OpenAPI specification against Allianz technology standards and return compliance results with violations and recommendations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "compliance",
+                "check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"openapi_url\": \"<uri>\",\n  \"standard_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cba5669e-32a0-411b-9de8-d596f41db08b",
+              "name": "Compliance check completed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compliance",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"openapi_url\": \"https://example.com/openapi.yaml\",\n  \"standard_ids\": [\n    \"std-500001\",\n    \"std-500002\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"check_id\": \"chk-500123\",\n  \"status\": \"completed\",\n  \"passed\": 18,\n  \"failed\": 3,\n  \"warnings\": 5,\n  \"violations\": [\n    {\n      \"rule_id\": \"pag-001\",\n      \"description\": \"pageSize parameter missing default value of 20\",\n      \"severity\": \"required\",\n      \"path\": \"/policies\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3bc81aa-d583-4e31-933a-4950a71d2f8e",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compliance",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"openapi_url\": \"https://example.com/openapi.yaml\",\n  \"standard_ids\": [\n    \"std-500001\",\n    \"std-500002\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"not_found\",\n  \"message\": \"The specified standard_id does not exist\",\n  \"request_id\": \"req-500999\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfa6a085-6db2-4050-a34f-452bf57fdd09",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "compliance",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"openapi_url\": \"https://example.com/openapi.yaml\",\n  \"standard_ids\": [\n    \"std-500001\",\n    \"std-500002\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"not_found\",\n  \"message\": \"The specified standard_id does not exist\",\n  \"request_id\": \"req-500999\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://standards.allianz.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "standards:read compliance:check"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://standards.allianz.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7c148414-c901-4761-bbbf-89b6c5f6e183",
+    "name": "Allianz Technology Standards Compliance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for checking and documenting compliance with Allianz technology standards. Provides endpoints for querying standards definitions, checking API compliance against guidelines, and retrieving standard-specific rules for pagination, sorting, webhooks, authentication, and architecture patterns.\n\nContact Support:\n Name: Allianz Technology Standards",
+      "type": "text/plain"
+    }
+  }
+}

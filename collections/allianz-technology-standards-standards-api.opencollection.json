@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Allianz Technology Compliance Standards API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://standards.allianz.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Standards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Allianz Technology Standards List Standards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://standards.allianz.com/api/v1/standards",
+            "params": [
+              {
+                "name": "category",
+                "value": "api-design",
+                "type": "query",
+                "description": "Filter standards by category"
+              },
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Maximum number of standards to return"
+              }
+            ]
+          },
+          "docs": "List all Allianz technology standards with their categories and current versions."
+        },
+        {
+          "info": {
+            "name": "Allianz Technology Standards Get Standard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://standards.allianz.com/api/v1/standards/:standard_id",
+            "params": [
+              {
+                "name": "standard_id",
+                "value": "std-500001",
+                "type": "path",
+                "description": "Unique identifier of the standard"
+              }
+            ]
+          },
+          "docs": "Retrieve the full definition and rules for a specific technology standard."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

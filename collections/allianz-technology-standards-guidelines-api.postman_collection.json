@@ -1,0 +1,297 @@
+{
+  "item": [
+    {
+      "id": "76f6074c-ea96-4feb-bed0-26cf4b3c7096",
+      "name": "Guidelines",
+      "description": {
+        "content": "Specific guideline rules for API design areas",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "26e40c33-4429-4b4a-9873-a53e9e88e019",
+          "name": "Allianz Technology Standards Get Pagination Guidelines",
+          "request": {
+            "name": "Allianz Technology Standards Get Pagination Guidelines",
+            "description": {
+              "content": "Retrieve the Allianz standard for API pagination including parameters and response headers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "guidelines",
+                "pagination"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "698440c4-e859-4e42-94d1-90fe5438d350",
+              "name": "Pagination guidelines retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "guidelines",
+                    "pagination"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guideline_id\": \"guide-pag-001\",\n  \"name\": \"Pagination Standard\",\n  \"version\": \"2.1.0\",\n  \"parameters\": [\n    {\n      \"name\": \"pageSize\",\n      \"default\": 20,\n      \"description\": \"Number of items per page\"\n    },\n    {\n      \"name\": \"page\",\n      \"default\": 1,\n      \"description\": \"Page number starting from 1\"\n    },\n    {\n      \"name\": \"totalRequired\",\n      \"description\": \"Whether to include total count\"\n    }\n  ],\n  \"response_headers\": [\n    {\n      \"name\": \"Total-Items\",\n      \"description\": \"Total number of items\"\n    },\n    {\n      \"name\": \"Total-Pages\",\n      \"description\": \"Total number of pages\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f43e884-ea4f-4eb9-88ec-e3ae773e8303",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "guidelines",
+                    "pagination"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"not_found\",\n  \"message\": \"The specified standard_id does not exist\",\n  \"request_id\": \"req-500999\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2725f48-6f2e-42a0-a1b3-491a78a5dc71",
+          "name": "Allianz Technology Standards Get Webhook Guidelines",
+          "request": {
+            "name": "Allianz Technology Standards Get Webhook Guidelines",
+            "description": {
+              "content": "Retrieve Allianz webhook implementation standards including security requirements and notification types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "guidelines",
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2384060-f7d8-40c1-8dcb-bf760eaf9ac9",
+              "name": "Webhook guidelines retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "guidelines",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guideline_id\": \"guide-wh-001\",\n  \"name\": \"Webhook Notification Standard\",\n  \"version\": \"1.3.0\",\n  \"notification_types\": [\n    {\n      \"type\": \"technical\",\n      \"description\": \"Fires when job completes\"\n    },\n    {\n      \"type\": \"functional\",\n      \"description\": \"Triggers upon business decision\"\n    }\n  ],\n  \"security_requirements\": [\n    {\n      \"requirement\": \"HTTPS endpoints only\"\n    },\n    {\n      \"requirement\": \"IP whitelisting required\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c87b8384-e971-40cb-8721-13bf3bda51ee",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "guidelines",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"not_found\",\n  \"message\": \"The specified standard_id does not exist\",\n  \"request_id\": \"req-500999\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://standards.allianz.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "standards:read compliance:check"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://standards.allianz.com/oauth2/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3b670203-58b9-402e-9d87-3d7170c455d7",
+    "name": "Allianz Technology Standards Compliance Guidelines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for checking and documenting compliance with Allianz technology standards. Provides endpoints for querying standards definitions, checking API compliance against guidelines, and retrieving standard-specific rules for pagination, sorting, webhooks, authentication, and architecture patterns.\n\nContact Support:\n Name: Allianz Technology Standards",
+      "type": "text/plain"
+    }
+  }
+}
