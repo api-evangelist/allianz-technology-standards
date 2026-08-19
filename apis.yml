@@ -31,7 +31,7 @@ description: >-
   processing.
 created: '2024-01-01'
 modified: '2026-06-20'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - aid: allianz-technology-standards:allianz-trade-api-standards
     name: Allianz Trade API Design Standards
