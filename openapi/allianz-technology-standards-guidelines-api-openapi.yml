@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Allianz Technology Standards Compliance Guidelines API
   description: API for checking and documenting compliance with Allianz technology standards. Provides endpoints for querying standards definitions, checking API compliance against guidelines, and retrieving standard-specific rules for pagination, sorting, webhooks, authentication, and architecture patterns.
@@ -102,6 +102,33 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    PaginationGuideline:
+      title: PaginationGuideline
+      type: object
+      description: Allianz pagination standard definition
+      properties:
+        guideline_id:
+          type: string
+          description: Unique identifier for the guideline
+          example: guide-pag-001
+        name:
+          type: string
+          description: Name of the guideline
+          example: Pagination Standard
+        version:
+          type: string
+          description: Version of the guideline
+          example: 2.1.0
+        parameters:
+          type: array
+          description: Standardized query parameters for pagination
+          items:
+            type: object
+        response_headers:
+          type: array
+          description: Standard response headers for pagination
+          items:
+            type: object
     ErrorResponse:
       title: ErrorResponse
       type: object
@@ -144,33 +171,6 @@ components:
         security_requirements:
           type: array
           description: Security requirements for webhook endpoints
-          items:
-            type: object
-    PaginationGuideline:
-      title: PaginationGuideline
-      type: object
-      description: Allianz pagination standard definition
-      properties:
-        guideline_id:
-          type: string
-          description: Unique identifier for the guideline
-          example: guide-pag-001
-        name:
-          type: string
-          description: Name of the guideline
-          example: Pagination Standard
-        version:
-          type: string
-          description: Version of the guideline
-          example: 2.1.0
-        parameters:
-          type: array
-          description: Standardized query parameters for pagination
-          items:
-            type: object
-        response_headers:
-          type: array
-          description: Standard response headers for pagination
           items:
             type: object
   securitySchemes:
