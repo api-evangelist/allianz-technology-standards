@@ -3,10 +3,13 @@
   "feeds": [
     {
       "source": "https://globaldigitalfactory.allianz.com/",
-      "error": "HTTPError"
+      "feed_url": "https://globaldigitalfactory.allianz.com/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-09-13T13:00:00Z",
+  "fetched": "2026-09-19T20:17:39Z",
   "post_count": 25,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
