@@ -1,9 +1,7 @@
 {
   "provider": "allianz-technology-standards",
   "sources": [
-    "allianz-technology-standards-compliance-api-openapi.yml",
-    "allianz-technology-standards-guidelines-api-openapi.yml",
-    "allianz-technology-standards-standards-api-openapi.yml"
+    "_ae-authored/allianz-technology-standards-compliance.yaml"
   ],
   "outputs": [
     "allianz-technology-standards-compliance-api-openapi.yml",
@@ -14,7 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "allianz-technology-standards-compliance.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "allianz-technology-standards-compliance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "allianz-technology-standards-guidelines-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "allianz-technology-standards-standards-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
