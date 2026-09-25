@@ -57,6 +57,9 @@ artifacts:
   examples/tech-standards-webhook-guideline-example.json:
     method: unknown
     evidence: no authorship recorded
+  front-door-ai/2026-09-17.yml:
+    method: unknown
+    evidence: no authorship recorded
   json-ld/allianz-technology-standards-context.jsonld:
     method: unknown
     evidence: no authorship recorded
