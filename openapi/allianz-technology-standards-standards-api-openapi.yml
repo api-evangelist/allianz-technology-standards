@@ -127,27 +127,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    StandardRule:
-      title: StandardRule
-      type: object
-      description: An individual rule within a technology standard
-      properties:
-        rule_id:
-          type: string
-          description: Unique identifier for the rule
-          example: pag-001
-        description:
-          type: string
-          description: Human-readable description of the rule
-          example: pageSize parameter must default to 20
-        severity:
-          type: string
-          description: Severity level of the rule
-          enum:
-          - required
-          - recommended
-          - optional
-          example: required
     Standard:
       title: Standard
       type: object
@@ -210,6 +189,27 @@ components:
           type: string
           description: Request identifier for support reference
           example: req-500999
+    StandardRule:
+      title: StandardRule
+      type: object
+      description: An individual rule within a technology standard
+      properties:
+        rule_id:
+          type: string
+          description: Unique identifier for the rule
+          example: pag-001
+        description:
+          type: string
+          description: Human-readable description of the rule
+          example: pageSize parameter must default to 20
+        severity:
+          type: string
+          description: Severity level of the rule
+          enum:
+          - required
+          - recommended
+          - optional
+          example: required
     StandardList:
       title: StandardList
       type: object
