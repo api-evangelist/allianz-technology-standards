@@ -127,6 +127,27 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    StandardRule:
+      title: StandardRule
+      type: object
+      description: An individual rule within a technology standard
+      properties:
+        rule_id:
+          type: string
+          description: Unique identifier for the rule
+          example: pag-001
+        description:
+          type: string
+          description: Human-readable description of the rule
+          example: pageSize parameter must default to 20
+        severity:
+          type: string
+          description: Severity level of the rule
+          enum:
+          - required
+          - recommended
+          - optional
+          example: required
     StandardList:
       title: StandardList
       type: object
@@ -141,23 +162,6 @@ components:
           description: List of standard records
           items:
             $ref: '#/components/schemas/Standard'
-    ErrorResponse:
-      title: ErrorResponse
-      type: object
-      description: Standard error response
-      properties:
-        error:
-          type: string
-          description: Error code
-          example: not_found
-        message:
-          type: string
-          description: Human-readable error description
-          example: The specified standard_id does not exist
-        request_id:
-          type: string
-          description: Request identifier for support reference
-          example: req-500999
     Standard:
       title: Standard
       type: object
@@ -203,27 +207,23 @@ components:
           description: List of rules defined by this standard
           items:
             $ref: '#/components/schemas/StandardRule'
-    StandardRule:
-      title: StandardRule
+    ErrorResponse:
+      title: ErrorResponse
       type: object
-      description: An individual rule within a technology standard
+      description: Standard error response
       properties:
-        rule_id:
+        error:
           type: string
-          description: Unique identifier for the rule
-          example: pag-001
-        description:
+          description: Error code
+          example: not_found
+        message:
           type: string
-          description: Human-readable description of the rule
-          example: pageSize parameter must default to 20
-        severity:
+          description: Human-readable error description
+          example: The specified standard_id does not exist
+        request_id:
           type: string
-          description: Severity level of the rule
-          enum:
-          - required
-          - recommended
-          - optional
-          example: required
+          description: Request identifier for support reference
+          example: req-500999
   securitySchemes:
     OAuth2:
       type: oauth2

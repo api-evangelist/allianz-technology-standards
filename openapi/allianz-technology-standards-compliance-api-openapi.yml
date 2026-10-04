@@ -77,26 +77,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ComplianceCheckRequest:
-      title: ComplianceCheckRequest
-      type: object
-      description: Request body for checking API compliance
-      required:
-      - openapi_url
-      properties:
-        openapi_url:
-          type: string
-          format: uri
-          description: URL of the OpenAPI spec to check
-          example: https://example.com/openapi.yaml
-        standard_ids:
-          type: array
-          description: List of standard IDs to check against
-          items:
-            type: string
-          example:
-          - std-500001
-          - std-500002
     ErrorResponse:
       title: ErrorResponse
       type: object
@@ -114,6 +94,31 @@ components:
           type: string
           description: Request identifier for support reference
           example: req-500999
+    ComplianceViolation:
+      title: ComplianceViolation
+      type: object
+      description: A compliance violation found during a check
+      properties:
+        rule_id:
+          type: string
+          description: Rule that was violated
+          example: pag-001
+        description:
+          type: string
+          description: Description of the violation
+          example: pageSize parameter missing default value of 20
+        severity:
+          type: string
+          description: Severity of the violation
+          enum:
+          - required
+          - recommended
+          - optional
+          example: required
+        path:
+          type: string
+          description: API path where the violation was found
+          example: /policies
     ComplianceResult:
       title: ComplianceResult
       type: object
@@ -148,31 +153,26 @@ components:
           description: List of compliance violations found
           items:
             $ref: '#/components/schemas/ComplianceViolation'
-    ComplianceViolation:
-      title: ComplianceViolation
+    ComplianceCheckRequest:
+      title: ComplianceCheckRequest
       type: object
-      description: A compliance violation found during a check
+      description: Request body for checking API compliance
+      required:
+      - openapi_url
       properties:
-        rule_id:
+        openapi_url:
           type: string
-          description: Rule that was violated
-          example: pag-001
-        description:
-          type: string
-          description: Description of the violation
-          example: pageSize parameter missing default value of 20
-        severity:
-          type: string
-          description: Severity of the violation
-          enum:
-          - required
-          - recommended
-          - optional
-          example: required
-        path:
-          type: string
-          description: API path where the violation was found
-          example: /policies
+          format: uri
+          description: URL of the OpenAPI spec to check
+          example: https://example.com/openapi.yaml
+        standard_ids:
+          type: array
+          description: List of standard IDs to check against
+          items:
+            type: string
+          example:
+          - std-500001
+          - std-500002
   securitySchemes:
     OAuth2:
       type: oauth2
