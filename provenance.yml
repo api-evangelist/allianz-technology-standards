@@ -9,6 +9,9 @@ artifacts:
   authentication/allianz-technology-standards-authentication.yml:
     method: derived
     evidence: declared in the artifact
+  capabilities/allianz-technology-standards-capability-edges.yml:
+    method: unknown
+    evidence: no authorship recorded
   collections/allianz-technology-standards-compliance-api.opencollection.json:
     method: derived
     evidence: openapi/allianz-technology-standards-compliance-api
@@ -130,8 +133,8 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   overlays/allianz-technology-standards-compliance-overlay.yaml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   packages/allianz-technology-standards-packages.yml:
     method: searched
     evidence: declared in the artifact
